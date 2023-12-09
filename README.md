@@ -14,13 +14,26 @@ This will send and receive messages and/or data to the platform specific wearabl
 
 ### iOS
 
-* iOS deployment target must be at least 9.3
+* iOS deployment target must be at least 14.0 (Necessário para adicionar a capacidade de enviar watchfaces para o Apple Watch)
 * enable bitcode in you app to support. [just follow these instructions to enable apple watch for your app](https://flutter.dev/docs/development/platform-integration/apple-watch)
 
 ## How to use
 
 * For information on how to access the sent data on wearable devices please see the example project
 * It is recommended to not rely on instantaneous transfer of data on IOS as applicationContext waits for a "low intensity situation" to set this value between app and watch
+
+### Sending Watchfaces
+
+Use the static method `WatchConnection.sendWatchface(String path);` to send a single watch face for Apple Watch for iOS.
+
+* Not yet available on Android, in the future I will study the possibility of adding this capability to Android & Watch OS (@kellvembarbosa) I appreciate any contributions
+
+* Only iOS for Apple Watch
+#### Example send Watchface
+
+```dart
+WatchConnection.sendWatchface("/var/.../Portrait.watchface");
+```
 
 ### Sending messages
 

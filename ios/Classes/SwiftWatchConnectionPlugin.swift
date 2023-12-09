@@ -3,7 +3,6 @@ import UIKit
 import WatchConnectivity
 import ClockKit
 
-@available(iOS 9.3, *)
 public class SwiftWatchConnectionPlugin: NSObject, FlutterPlugin {
     
     public static func register(with registrar: FlutterPluginRegistrar) {
@@ -13,11 +12,13 @@ public class SwiftWatchConnectionPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
         instance.channel = channel
     }
+
     public var channel: FlutterMethodChannel? = nil
     private var messageListenerIds: [Int] = []
     private var dataListenerIds: [Int] = []
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+        debugPrint("handle call --> \(call.method)");
         switch call.method {
         case "listenData":
             debugPrint("Listen data")
@@ -147,7 +148,7 @@ extension SwiftWatchConnectionPlugin: WCSessionDelegate {
         for id in dataListenerIds {
             channel?.invokeMethod("dataReceived", arguments: [
                 "id": id,
-                "args":applicationContext
+                "args": applicationContext
             ])
         }
     }

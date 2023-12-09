@@ -80,6 +80,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///Users/kellvembarbosa/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.7",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/kellvembarbosa/development/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -140,7 +146,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2023-12-09T10:16:00.268394Z",
+  "generated": "2023-12-09T12:44:25.839296Z",
   "generator": "pub",
   "generatorVersion": "3.2.2"
 }

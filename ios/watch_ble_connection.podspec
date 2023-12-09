@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'watch_ble_connection'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'Communication between Watch and Android/iOS Device'
   s.description      = <<-DESC
 Flutter Package for communication between Wear OS or watchOS SmartWatch and Android/iOS Device with Bluetooth Low Energy (BLE).
@@ -15,9 +15,9 @@ Flutter Package for communication between Wear OS or watchOS SmartWatch and Andr
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.platform = :ios, '9.3'
+  s.platform = :ios, '14.0'
 
-  # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
+  # Flutter.framework does not contain a i386 slice.
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
 end

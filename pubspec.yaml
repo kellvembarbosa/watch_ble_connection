@@ -1,6 +1,6 @@
 name: watch_ble_connection
 description: Communication between Watch and Android/iOS Device.
-version: 1.0.2
+version: 1.0.3
 repository: https://github.com/AfriwanAhda/watch_ble_connection.git
 
 environment:
@@ -15,6 +15,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   change_app_package_name: ^1.1.0
+  plugin_platform_interface: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -31,7 +32,7 @@ flutter:
         package: com.afriwan.ahda
         pluginClass: WatchConnectionPlugin
       ios:
-        pluginClass: WatchConnectionPlugin
+        pluginClass: SwiftWatchConnectionPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
