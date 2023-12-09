@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'watch_ble_connection'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'Communication between Watch and Android/iOS Device'
   s.description      = <<-DESC
 Flutter Package for communication between Wear OS or watchOS SmartWatch and Android/iOS Device with Bluetooth Low Energy (BLE).

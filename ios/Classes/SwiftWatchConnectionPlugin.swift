@@ -1,6 +1,7 @@
 import Flutter
 import UIKit
 import WatchConnectivity
+import ClockKit
 
 @available(iOS 9.3, *)
 public class SwiftWatchConnectionPlugin: NSObject, FlutterPlugin {
@@ -42,6 +43,10 @@ public class SwiftWatchConnectionPlugin: NSObject, FlutterPlugin {
                 messageListenerIds = messageListenerIds.filter { $0 != id }
             }
             result(nil)
+        case "sendWatchface":
+            debugPrint("Send watchface", call.arguments ?? "no arguments")
+            self.sendWatchface(call, result)
+            result(nil)
         case "sendMessage":
             debugPrint("Send message", call.arguments ?? "no arguments")
             self.sendMessage(call, result)
@@ -63,6 +68,27 @@ public class SwiftWatchConnectionPlugin: NSObject, FlutterPlugin {
             }
         }
     }
+
+    private func sendWatchface(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        startWCSession()
+        if let safeArgs = call.arguments as? Dictionary<String, Any>, let path = safeArgs["path"] as? String {
+            if WCSession.default.activationState == .activated {
+                CLKWatchFaceLibrary().addWatchFace(at: URL(fileURLWithPath: path, isDirectory: false)) { error in
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                        result(false)
+                        return
+                    }
+                    result(true)
+                }
+            } else {
+                result(false)
+            }
+        } else {
+            result(false)
+        }
+    }
+
     
     private func setData(_ call: FlutterMethodCall) {
         startWCSession()

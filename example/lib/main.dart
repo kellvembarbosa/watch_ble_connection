@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController _controller;
+  late TextEditingController _controller;
   String value = '';
 
   @override
@@ -47,8 +47,7 @@ class _MyAppState extends State<MyApp> {
               children: [
                 TextField(
                   controller: _controller,
-                  decoration: InputDecoration(
-                      border: InputBorder.none, labelText: 'Enter some text'),
+                  decoration: InputDecoration(border: InputBorder.none, labelText: 'Enter some text'),
                   onChanged: (String val) async {
                     setState(() {
                       value = val;
@@ -58,20 +57,16 @@ class _MyAppState extends State<MyApp> {
                 OutlinedButton(
                   child: Text('Send message to Watch'),
                   onPressed: () {
-                    primaryFocus.unfocus(disposition: UnfocusDisposition.scope);
-                    WatchConnection.sendMessage({
-                      "text": value
-                    });
+                    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
+                    WatchConnection.sendMessage({"text": value});
                   },
                 ),
                 OutlinedButton(
                   child: Text('Set data on Watch'),
                   onPressed: () {
-                    primaryFocus.unfocus(disposition: UnfocusDisposition.scope);
+                    primaryFocus?.unfocus(disposition: UnfocusDisposition.scope);
                     WatchConnection.setData("message", {
-                      "text": value != ""
-                          ? value
-                          : "test", // ensure we have at least empty string
+                      "text": value != "" ? value : "test", // ensure we have at least empty string
                       "integerValue": 1,
                       "intList": [1, 2, 3],
                       "stringList": ["one", "two", "three"],

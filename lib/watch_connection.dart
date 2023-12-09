@@ -11,6 +11,12 @@ class WatchConnection {
     return version;
   }
 
+  /// Send a message to all connected watches
+  static Future<bool> sendWatchface(String path) async {
+    final isWatchfaceInstalled = await _channel.invokeMethod<bool>('sendWatchface', {'path': path});
+    return isWatchfaceInstalled ?? false;
+  }
+
   /// send message to watch
   /// the message must conform to https://api.flutter.dev/flutter/services/StandardMessageCodec-class.html
   ///
